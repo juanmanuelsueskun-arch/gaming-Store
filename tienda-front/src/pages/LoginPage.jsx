@@ -61,97 +61,69 @@ function LoginPage() {
   }
 
   return (
-    <>
-      <style>{`
-        @keyframes bubbleFloat {
-          0% {
-            transform: translateY(0) scale(1);
-            opacity: 0;
-          }
-          10% {
-            opacity: 0.35;
-          }
-          50% {
-            opacity: 0.22;
-          }
-          100% {
-            transform: translateY(-110vh) scale(1.18);
-            opacity: 0;
-          }
-        }
+    <div className="flex min-h-screen">
 
-        .bubble {
-          position: absolute;
-          bottom: -120px;
-          border-radius: 9999px;
-          animation-name: bubbleFloat;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-          filter: blur(1px);
-        }
-      `}</style>
+      {/* ── Panel izquierdo: imagen hero ── */}
+      <div className="relative hidden lg:flex lg:w-1/2 xl:w-3/5">
+        <img
+          src="/src/assets/login-hero.webp"
+          alt="Tienda hero"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        {/* Overlay degradado */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-cyan-900/50 to-transparent" />
 
-      <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white px-4">
-        {/* Fondo decorativo */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-[-60px] top-[-60px] h-72 w-72 rounded-full bg-cyan-200/40 blur-3xl" />
-          <div className="absolute right-[-80px] top-1/4 h-80 w-80 rounded-full bg-fuchsia-200/30 blur-3xl" />
-          <div className="absolute bottom-[-80px] left-1/3 h-72 w-72 rounded-full bg-emerald-200/30 blur-3xl" />
-        </div>
-
-        {/* Burbujas de colores */}
-        <div className="pointer-events-none absolute inset-0">
-          <span
-            className="bubble left-[6%] h-16 w-16 bg-cyan-300/30"
-            style={{ animationDuration: '8s', animationDelay: '0s' }}
-          />
-          <span
-            className="bubble left-[14%] h-10 w-10 bg-sky-300/30"
-            style={{ animationDuration: '6s', animationDelay: '1.5s' }}
-          />
-          <span
-            className="bubble left-[24%] h-24 w-24 bg-blue-200/30"
-            style={{ animationDuration: '9s', animationDelay: '2s' }}
-          />
-          <span
-            className="bubble left-[36%] h-14 w-14 bg-violet-200/25"
-            style={{ animationDuration: '7s', animationDelay: '3.5s' }}
-          />
-          <span
-            className="bubble left-[48%] h-20 w-20 bg-fuchsia-200/25"
-            style={{ animationDuration: '10s', animationDelay: '1s' }}
-          />
-          <span
-            className="bubble left-[58%] h-12 w-12 bg-rose-200/25"
-            style={{ animationDuration: '6s', animationDelay: '4.5s' }}
-          />
-          <span
-            className="bubble left-[68%] h-28 w-28 bg-emerald-200/25"
-            style={{ animationDuration: '11s', animationDelay: '2.5s' }}
-          />
-          <span
-            className="bubble left-[78%] h-16 w-16 bg-teal-300/25"
-            style={{ animationDuration: '8s', animationDelay: '5s' }}
-          />
-          <span
-            className="bubble left-[88%] h-11 w-11 bg-amber-200/25"
-            style={{ animationDuration: '7s', animationDelay: '6s' }}
-          />
-        </div>
-
-        {/* Tarjeta login */}
-        <div className="relative z-10 w-full max-w-md rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-2xl backdrop-blur-md">
-          <h1 className="mb-2 text-3xl font-bold text-slate-800">
-            Iniciar sesión
-          </h1>
-
-          <p className="mb-6 text-sm text-slate-500">
-            Entra con tu cuenta de cliente o administrador
+        {/* Texto de marca sobre la imagen */}
+        <div className="relative z-10 flex flex-col justify-end p-12 pb-16">
+          <span className="mb-3 inline-block w-fit rounded-full bg-cyan-500/20 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-300 ring-1 ring-cyan-500/30">
+            Tu tienda en línea
+          </span>
+          <h2 className="text-5xl font-extrabold leading-tight text-white">
+            Descubre lo<br />mejor de la tienda
+          </h2>
+          <p className="mt-4 max-w-sm text-base text-slate-300/80">
+            Productos exclusivos, los mejores precios y una experiencia de compra sin igual.
           </p>
+        </div>
+      </div>
 
-          <form className="space-y-4" onSubmit={handleSubmit}>
+      {/* ── Panel derecho: formulario ── */}
+      <div className="relative flex w-full flex-col items-center justify-center bg-white px-6 py-12 lg:w-1/2 xl:w-2/5">
+        {/* Detalles decorativos de fondo */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-cyan-100/60 blur-3xl" />
+          <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-fuchsia-100/40 blur-3xl" />
+        </div>
+
+        <div className="relative z-10 w-full max-w-sm">
+          {/* Icono + título */}
+          <div className="mb-8">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-fuchsia-500 shadow-lg shadow-fuchsia-500/30">
+              <svg
+                className="h-6 w-6 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"
+                />
+              </svg>
+            </div>
+            <h1 className="text-3xl font-bold text-slate-800">
+              Iniciar sesión
+            </h1>
+            <p className="mt-1 text-sm text-slate-500">
+              Entra con tu cuenta de cliente o administrador
+            </p>
+          </div>
+
+          <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
-              <label className="mb-2 block text-sm text-slate-600">
+              <label className="mb-1.5 block text-sm font-medium text-slate-700">
                 Email
               </label>
               <input
@@ -159,13 +131,13 @@ function LoginPage() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-100"
                 placeholder="correo@ejemplo.com"
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-sm text-slate-600">
+              <label className="mb-1.5 block text-sm font-medium text-slate-700">
                 Contraseña
               </label>
               <input
@@ -173,15 +145,15 @@ function LoginPage() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"
-                placeholder="********"
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-100"
+                placeholder="••••••••"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-xl bg-cyan-500 px-4 py-3 font-semibold text-white transition hover:bg-cyan-600 disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full rounded-xl bg-fuchsia-500 px-4 py-3 font-semibold text-white shadow-md shadow-fuchsia-500/20 transition hover:bg-fuchsia-600 hover:shadow-fuchsia-500/40 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {loading ? 'Entrando...' : 'Entrar'}
             </button>
@@ -190,7 +162,7 @@ function LoginPage() {
               ¿No tienes cuenta?{' '}
               <Link
                 to="/register"
-                className="font-medium text-cyan-600 hover:text-cyan-700"
+                className="font-medium text-fuchsia-600 hover:text-fuchsia-700"
               >
                 Regístrate
               </Link>
@@ -198,7 +170,8 @@ function LoginPage() {
           </form>
         </div>
       </div>
-    </>
+
+    </div>
   )
 }
 
