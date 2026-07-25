@@ -39,7 +39,6 @@ Ejemplo:
 ```env
 PORT=4000
 SUPABASE_URL=https://rcyhrcznvlrhubidfqvp.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=sb_secret_iJ0RdmiRfefkB9PqeSpj-Q_h6Ongw_D
 JWT_SECRET=clave_super_secreta
 ```
 
